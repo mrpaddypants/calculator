@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Climate+Crisis&family=Doto:wght@100..900&family=Lemon&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Doto", sans-serif;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #272727;
+}
+
+#calculator {
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+    border-radius: 3rem;
+    box-sizing: border-box;
+    height: 680px;
+    width: 500px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+    background-color: #efcb68;
+}
+
+.firstRow,
+.secondRow,
+.thirdRow,
+.fourthRow,
+.fifthRow {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.fifthRow {
+    margin-bottom: 2rem;
+    gap: 3rem;
+
+}
+
+.display {
+    align-self: stretch;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 50px;
+    margin-top: 2rem;
+    margin-right: 2.5rem;
+    margin-left: 2.5rem;
+    padding: 0.5rem;
+    font-weight: 900;
+    color: #160c28;
+    background-color: #e1efe6;
+    border-radius: 2rem;
+
+}
+
+.btn {
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    background-color: #160c28;
+    border: none;
+    color: #e1efe6;
+    font-size: 44px;
+    font-weight: 900;
+    cursor: pointer;
+}
+
+.clearBtn {
+    width: 170px;
+}
+
+.dotBtn {
+    margin-right: 10.1px;
+}
+
