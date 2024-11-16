@@ -19,55 +19,53 @@ let divide = function (num1, num2) {
     }
 }
 
+let calcNum1 = 0;
+let calcNum2 = 0;
+let calcOperator = "";
+
 function clearScrn() {
     clearBtn.addEventListener("click", () => {
-        displayScrn.innerHTML = "";
+        location.reload();
     });
 }
 
 // number buttons on the calculator
 const numBtns = document.querySelectorAll(".numBtn");
 numBtns.forEach((numBtn) => {
-    console.log(numBtn.textContent);
-    
+    numBtn.addEventListener("click", () => {
+        displayScrn.textContent += numBtn.textContent;
+        calcNum1 = numBtn.textContent;
+        calcNum1 = Number(calcNum1);
+        console.log(calcNum1);
+    });
 })
 
 
-const zeroBtn = document.querySelector(".zeroBtn");
-const oneBtn = document.querySelector(".oneBtn");
-const twoBtn = document.querySelector(".twoBtn");
-const threeBtn = document.querySelector(".threeBtn");
-const fourBtn = document.querySelector(".fourBtn");
-const fiveBtn = document.querySelector(".fiveBtn");
-const sixBtn = document.querySelector(".sixBtn");
-const sevenBtn = document.querySelector(".sevenBtn");
-const eightBtn = document.querySelector(".eightBtn");
-const nineBtn = document.querySelector(".nineBtn");
-
 //operator buttons on the calculator
 const operatorBtns = document.querySelectorAll(".oprBtn");
-const equalBtn = document.querySelector(".equalBtn");
-const divisionBtn = document.querySelector(".divisionBtn");
-const multiplyBtn = document.querySelector(".multiplyBtn");
-const subtractBtn = document.querySelector(".subtractBtn");
-const addBtn = document.querySelector(".addBtn"); 
+operatorBtns.forEach((oprBtn) => {
+    oprBtn.addEventListener("click", () => {
+        displayScrn.textContent += oprBtn.textContent;
+        calcOperator = oprBtn.textContent;
+    });
+});
+
+
 
 // other entities
 const clearBtn = document.querySelector(".clearBtn");
 const backBtn = document.querySelector(".backBtn");
 const dotBtn = document.querySelector(".dotBtn");
 const displayScrn = document.querySelector(".display");
+const equalBtn = document.querySelector(".equalBtn");
 
 
 
-let calcNum1;
-let calNum2;
-let calcOperator;
+let result = 0;
 
-function operate(operator, num1, num2) {
-        let result;
+function operate(operator, calcNum1) {
         if (operator === "+") {
-            result = add(num1, num2);
+            result = add(calcNum1, calcNum1);
             displayScrn.innerHTML = result;
         } else if (operator === "-") {
             result = subtract(num1, num2);
@@ -84,5 +82,5 @@ function operate(operator, num1, num2) {
 clearScrn();
 
 equalBtn.addEventListener("click", () => {
-    operate();
+    operate(calcOperator, calcNum1);
 })
