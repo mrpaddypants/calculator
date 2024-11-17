@@ -13,6 +13,33 @@ function back() {
     displayScrn.textContent = displayScrnValue;
 }
 
+function operate(array) {
+    if (calcOperator === "+") {
+        result = array.reduce((total, next) => {
+            return total + next;
+        });
+        displayScrn.textContent = result;
+    } else if (calcOperator === "-") {
+        result = array.reduce((total, next) => {
+            return total - next;
+        });
+        displayScrn.textContent = result;
+    } else if (calcOperator === "*") {
+        result = array.reduce((total, next) => {
+            return total * next;
+        });
+        displayScrn.textContent = result;
+    } else if (calcOperator === "/") {
+        result = array.reduce((total, next) => {
+            if (next === 0) {
+                alert("You cannot divide numbers by 0, you dumbass.")
+            } else {
+                return total / next;
+            }
+        });
+        displayScrn.textContent = Math.round(result * 100) / 100;
+    }
+}
 
 // number buttons on the calculator
 const numBtns = document.querySelectorAll(".numBtn");
@@ -22,8 +49,7 @@ numBtns.forEach((numBtn) => {
         calcNum = numBtn.textContent;
         calcNum = Number(calcNum);
     });
-})
-
+});
 
 //operator buttons on the calculator
 const operatorBtns = document.querySelectorAll(".oprBtn");
@@ -33,8 +59,6 @@ operatorBtns.forEach((oprBtn) => {
         calcOperator = oprBtn.textContent;
     });
 });
-
-
 
 // other entities
 const clearBtn = document.querySelector(".clearBtn");
@@ -48,6 +72,8 @@ backBtn.addEventListener("click", () => {
 
 const dotBtn = document.querySelector(".dotBtn");
 const displayScrn = document.querySelector(".display");
+
+
 document.addEventListener("keydown", (e) => {
     displayScrn.textContent += e.key;
     if (e.key === "+" || e.key === "-" || e.key === "*" || e.key === "/") {
@@ -68,7 +94,8 @@ document.addEventListener("keydown", (e) => {
         back();
     }
     
-})
+});
+
 const equalBtn = document.querySelector(".equalBtn");
 
 equalBtn.addEventListener("click", () => {
@@ -82,38 +109,3 @@ equalBtn.addEventListener("click", () => {
         operate(arrayOfNums);
     }
 });
-
-
-
-
-
-function operate(array) {
-        if (calcOperator === "+") {
-            result = array.reduce((total, next) => {
-                return total + next;
-            });
-            displayScrn.textContent = result;
-        } else if (calcOperator === "-") {
-            result = array.reduce((total, next) => {
-                return total - next;
-            });
-            displayScrn.textContent = result;
-        } else if (calcOperator === "*") {
-            result = array.reduce((total, next) => {
-                return total * next;
-            });
-            displayScrn.textContent = result;
-        } else if (calcOperator === "/") {
-            result = array.reduce((total, next) => {
-                if (next === 0) {
-                    alert("You cannot divide numbers by 0, you dumbass.")
-                } else {
-                    return total / next;
-                }
-            });
-            displayScrn.textContent = Math.round(result * 100) / 100;
-        }
-    }
-
-
-
