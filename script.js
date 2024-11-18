@@ -94,6 +94,8 @@ document.addEventListener("keydown", (e) => {
         }
     } else if (e.key === "Backspace") {
         back();
+    } else if (e.key === "c") {
+        clearScrn();
     }
     
 });
