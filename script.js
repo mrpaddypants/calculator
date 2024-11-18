@@ -73,12 +73,14 @@ backBtn.addEventListener("click", () => {
 const dotBtn = document.querySelector(".dotBtn");
 const displayScrn = document.querySelector(".display");
 
+const possibleKeys = ["+", "-", "*", "/", 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "Enter", "Backspace"];
 
 document.addEventListener("keydown", (e) => {
-    displayScrn.textContent += e.key;
     if (e.key === "+" || e.key === "-" || e.key === "*" || e.key === "/") {
+        displayScrn.textContent += e.key;
         calcOperator = e.key;
-    } else if (e.key === 0 || e.key === 1 || e.key === 2 || e.key === 3 || e.key === 4 || e.key === 5 || e.key === 6 || e.key === 7 || e.key === 8 || e.key === 9) {
+    } else if (e.key === "0" || e.key === "1" || e.key === "2" || e.key === "3" || e.key === "4" || e.key === "5" || e.key === "6" || e.key === "7" || e.key === "8" || e.key === "9") {
+        displayScrn.textContent += e.key;
         calcNum = e.key;
     } else if (e.key === "Enter") {
         let arrayOfNums = displayScrn.textContent.split(calcOperator).map(function(item) {
