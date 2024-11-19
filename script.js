@@ -4,7 +4,7 @@ let displayScrnValue = "";
 let result = 0;
 
 function clearScrn() {
-    location.reload();
+    displayScrn.textContent = "";
 }
 
 function back() {
@@ -64,7 +64,7 @@ operatorBtns.forEach((oprBtn) => {
 const clearBtn = document.querySelector(".clearBtn");
 clearBtn.addEventListener("click", () => {
     clearScrn();
-})
+});
 const backBtn = document.querySelector(".backBtn");
 backBtn.addEventListener("click", () => {
     back();
@@ -72,12 +72,14 @@ backBtn.addEventListener("click", () => {
 
 const dotBtn = document.querySelector(".dotBtn");
 dotBtn.addEventListener("click", () => {
-    displayScrn.textContent += dotBtn.textContent;
+    let currentNumber = displayScrn.textContent.split(/[\+\-\*\/]/).pop();
+    if (!currentNumber.includes(".")) {
+        displayScrn.textContent += dotBtn.textContent;
+    }
 });
 
-const displayScrn = document.querySelector(".display");
 
-const possibleKeys = ["+", "-", "*", "/", 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "Enter", "Backspace"];
+const displayScrn = document.querySelector(".display");
 
 document.addEventListener("keydown", (e) => {
     if (e.key === "+" || e.key === "-" || e.key === "*" || e.key === "/") {
@@ -92,7 +94,7 @@ document.addEventListener("keydown", (e) => {
         });
         if (arrayOfNums.length < 2) {
             displayScrn.textContent = "Error";
-            location.reload();
+            clearScrn();
         } else {
             operate(arrayOfNums);
         }
@@ -101,9 +103,11 @@ document.addEventListener("keydown", (e) => {
     } else if (e.key === "c") {
         clearScrn();
     } else if (e.key === ".") {
-        displayScrn.textContent += e.key;
+        let currentNumber = displayScrn.textContent.split(/[\+\-\*\/]/).pop();
+        if (!currentNumber.includes(".")) {
+            displayScrn.textContent += e.key;
+        }
     }
-    
 });
 
 const equalBtn = document.querySelector(".equalBtn");
