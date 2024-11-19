@@ -71,6 +71,12 @@ backBtn.addEventListener("click", () => {
 });
 
 const dotBtn = document.querySelector(".dotBtn");
+dotBtn.addEventListener("click", () => {
+
+    displayScrn.textContent += dotBtn.textContent;
+    
+});
+
 const displayScrn = document.querySelector(".display");
 
 const possibleKeys = ["+", "-", "*", "/", 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "Enter", "Backspace"];
@@ -84,7 +90,7 @@ document.addEventListener("keydown", (e) => {
         calcNum = e.key;
     } else if (e.key === "Enter") {
         let arrayOfNums = displayScrn.textContent.split(calcOperator).map(function(item) {
-            return parseInt(item, 10);
+            return parseFloat(item, 10);
         });
         if (arrayOfNums.length < 2) {
             displayScrn.textContent = "Error";
@@ -104,7 +110,7 @@ const equalBtn = document.querySelector(".equalBtn");
 
 equalBtn.addEventListener("click", () => {
     let arrayOfNums = displayScrn.textContent.split(calcOperator).map(function(item) {
-        return parseInt(item, 10);
+        return parseFloat(item, 10);
     });
     if (arrayOfNums.length < 2) {
         displayScrn.textContent = "Error";
