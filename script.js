@@ -72,9 +72,7 @@ backBtn.addEventListener("click", () => {
 
 const dotBtn = document.querySelector(".dotBtn");
 dotBtn.addEventListener("click", () => {
-
     displayScrn.textContent += dotBtn.textContent;
-    
 });
 
 const displayScrn = document.querySelector(".display");
@@ -102,6 +100,8 @@ document.addEventListener("keydown", (e) => {
         back();
     } else if (e.key === "c") {
         clearScrn();
+    } else if (e.key === ".") {
+        displayScrn.textContent += e.key;
     }
     
 });
